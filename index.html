@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consulta de Datos</title>
+    <style>
+        body{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            background-color: rgb(244, 244, 234);
+        }
+        div {
+            padding: 10px;
+	    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+	    animation: gradient 15s ease infinite;
+	
+        }
+        @keyframes gradient {
+        0% {
+            background-position: 0% 50%;
+        }
+        50% {
+            background-position: 100% 50%;
+        }
+        100% {
+            background-position: 0% 50%;
+        }
+        }
+        #tama{
+            font-size: x-large;
+        }
+
+    </style>
+</head>
+<body>
+    <h1>
+        Extra de Sistemas Distribuidos
+    </h1>
+    <h1>
+        Tamayo Hernandez Atzin Alejandro 
+    </h1>
+    <p id="tama">
+        Profa, no pude mandar los valores al html T_T, pero en la consola si pude mostrar los datos de los usuarios que se conectan al socket, puede corroborarlo en la consola de glitch
+    </p>
+    <div class="container">
+        <img src="img/fotoprueba.PNG" > 
+        <p id="data">
+
+        </p>
+    </div>
+    <script src="index.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        var socket = io();
+        var data = document.getElementById('data');
+        socket.on('info', function(meter) {
+        var item = document.createElement('p');
+        item.textContent = meter;
+        data.appendChild(item);
+  });
+    </script>
+</body>
+</html>
